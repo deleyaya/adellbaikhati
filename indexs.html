@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profil Pribadi – Adelia Aisyah Azizah Ahmad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f4ff; --surface:#ffffff; --ink:#241b3d; --muted:#6a6285;
+  --violet:#6c4cf1; --pink:#ff5c8a; --sun:#ffc93c; --mint:#22b8a8;
+  --mark:#ffd966; --line:#e6e0f5; --shadow:0 10px 30px rgba(76,52,160,.12);
+  --c1:#ffe3ec; --c2:#e6e0ff; --c3:#d7f5f0; --c4:#fff0c7;
+  --profile-from:#5b3df5; --profile-to:#d63fa0;
+  --r:24px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#140f26; --surface:#1f1838; --ink:#f1ecff; --muted:#b2a8d4;
+    --violet:#9a82ff; --pink:#ff7aa2; --mark:rgba(255,201,60,.38); --line:#34295a;
+    --shadow:0 10px 30px rgba(0,0,0,.4);
+    --c1:#3a1f33; --c2:#2a2352; --c3:#17383a; --c4:#3d3317;
+    --profile-from:#3a2a9c; --profile-to:#8a2a6c;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Nunito',system-ui,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.7;font-size:1.0625rem;position:relative;overflow-x:hidden;
+}
+/* Latar warna-warni lembut */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(circle at 8% 4%, rgba(255,92,138,.22), transparent 38%),
+    radial-gradient(circle at 96% 12%, rgba(108,76,241,.22), transparent 42%),
+    radial-gradient(circle at 60% 100%, rgba(34,184,168,.18), transparent 45%);
+}
+h1,h2,h3{font-family:'Fredoka','Nunito',sans-serif;line-height:1.15}
+a{color:var(--violet)}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+
+.wrap{
+  max-width:1160px;margin:0 auto;padding:clamp(16px,4vw,52px);
+  display:grid;grid-template-columns:330px 1fr;gap:clamp(22px,3.5vw,48px);align-items:start;
+}
+
+/* ===== Kartu profil ===== */
+.profile{
+  position:sticky;top:24px;color:#fff;text-align:center;
+  background:linear-gradient(155deg,var(--profile-from),var(--profile-to));
+  border-radius:var(--r);padding:36px 26px 30px;overflow:hidden;
+  box-shadow:0 18px 40px rgba(91,61,245,.35);
+  animation:rise .7s both;
+}
+.profile::before,.profile::after{
+  content:"";position:absolute;border-radius:50%;pointer-events:none;
+}
+.profile::before{width:220px;height:220px;top:-90px;right:-80px;background:rgba(255,255,255,.14)}
+.profile::after{width:160px;height:160px;bottom:-60px;left:-60px;background:rgba(255,201,60,.22)}
+.profile > *{position:relative;z-index:1}
+
+.avatar{
+  width:176px;height:176px;border-radius:50%;margin:0 auto 20px;position:relative;
+  background:var(--violet);display:grid;place-items:center;
+  font:700 3.8rem 'Fredoka',sans-serif;color:#fff;
+  box-shadow:0 0 0 6px var(--sun),0 0 0 13px rgba(255,255,255,.28),0 16px 30px rgba(0,0,0,.25);
+  animation:float 5s ease-in-out infinite;
+}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;z-index:1}
+.avatar span{position:relative}
+
+.profile h1{font-size:1.75rem;font-weight:700;text-shadow:0 2px 10px rgba(0,0,0,.2)}
+.profile .tagline{
+  display:inline-block;margin:10px 0 24px;padding:5px 14px;border-radius:999px;
+  background:rgba(255,255,255,.18);font-size:.95rem;font-weight:600;
+}
+.profile nav{display:flex;flex-direction:column;gap:10px}
+.profile nav a{
+  color:#fff;text-decoration:none;padding:11px 16px;border-radius:14px;font-weight:700;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);
+  transition:transform .2s,background .2s,color .2s;
+}
+.profile nav a:hover{background:#fff;color:var(--profile-from);transform:translateX(4px)}
+
+/* ===== Konten ===== */
+main{display:flex;flex-direction:column;gap:clamp(22px,3vw,38px)}
+section{
+  background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);
+  padding:clamp(24px,3.2vw,40px);border:1px solid var(--line);
+  animation:rise .7s both;
+}
+section:nth-of-type(1){animation-delay:.1s}
+section:nth-of-type(2){animation-delay:.2s}
+section:nth-of-type(3){animation-delay:.3s}
+section h2{
+  font-size:clamp(1.6rem,3.2vw,2.2rem);font-weight:700;margin-bottom:24px;display:inline-block;padding:0 8px;
+  background:linear-gradient(transparent 60%,var(--mark) 60% 92%,transparent 92%);
+}
+
+.about{margin-bottom:26px;max-width:62ch;font-size:1.15rem;color:var(--muted)}
+.about::before{content:"👋 ";}
+
+dl.bio{display:grid;grid-template-columns:max-content 1fr;gap:0 32px}
+dl.bio dt{font-weight:700;color:var(--violet)}
+dl.bio dd{font-weight:600;overflow-wrap:anywhere}
+dl.bio dt,dl.bio dd{padding:13px 0;border-bottom:2px dashed var(--line)}
+dl.bio dt:last-of-type,dl.bio dd:last-of-type{border-bottom:0}
+
+/* ===== Hobi ===== */
+.hobbies{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;list-style:none}
+.hobbies li{
+  border-radius:20px;padding:22px;position:relative;
+  transition:transform .25s,box-shadow .25s;
+}
+.hobbies li:nth-child(1){background:var(--c1)}
+.hobbies li:nth-child(2){background:var(--c2)}
+.hobbies li:nth-child(3){background:var(--c3)}
+.hobbies li:nth-child(4){background:var(--c4)}
+.hobbies li:hover{transform:translateY(-7px) rotate(-1.2deg);box-shadow:var(--shadow)}
+.hobbies .ico{
+  width:58px;height:58px;border-radius:18px;display:grid;place-items:center;margin-bottom:12px;
+  font-size:1.9rem;background:var(--surface);box-shadow:0 6px 14px rgba(0,0,0,.1);
+}
+.hobbies h3{font-size:1.25rem;font-weight:600;margin-bottom:4px}
+.hobbies p{font-size:.97rem;color:var(--muted)}
+
+/* ===== Galeri ===== */
+.sub{font-size:1.3rem;font-weight:600;margin:30px 0 16px;display:flex;align-items:center;gap:10px}
+.sub:first-of-type{margin-top:0}
+.sub::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--line),transparent)}
+.photos{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+
+figure{
+  background:var(--surface);border-radius:18px;padding:10px 10px 0;overflow:hidden;
+  border:1px solid var(--line);box-shadow:var(--shadow);
+  transition:transform .3s,box-shadow .3s;
+}
+.photos figure:nth-child(odd){transform:rotate(-1.6deg)}
+.photos figure:nth-child(even){transform:rotate(1.6deg)}
+.photos figure:hover{transform:rotate(0) scale(1.03);box-shadow:0 18px 36px rgba(76,52,160,.25);z-index:2;position:relative}
+.videos figure:hover{transform:translateY(-5px)}
+figure img,figure video{
+  width:100%;display:block;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:var(--c2);color:var(--muted);
+}
+figure video{background:#000}
+figure img{overflow:hidden;transition:transform .5s}
+.photos figure:hover img{transform:scale(1.04)}
+figcaption{padding:12px 6px 14px;text-align:center;font-family:'Fredoka',sans-serif;font-size:1rem;color:var(--muted)}
+
+footer{text-align:center;color:var(--muted);font-size:.92rem;padding:6px 0 26px}
+footer::before{content:"✨ "}
+footer::after{content:" ✨"}
+
+/* ===== Animasi ===== */
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+
+/* ===== Responsif ===== */
+@media (max-width:880px){
+  .wrap{grid-template-columns:1fr}
+  .profile{position:relative;top:auto}
+  .profile nav{flex-direction:row;flex-wrap:wrap;justify-content:center}
+  .profile nav a:hover{transform:translateY(-2px)}
+}
+@media (max-width:540px){
+  dl.bio{grid-template-columns:1fr}
+  dl.bio dt{border-bottom:0;padding-bottom:0}
+  dl.bio dt:last-of-type{border-bottom:0}
+  dl.bio dd:last-of-type{border-bottom:0}
+  .photos{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ====== KARTU PROFIL ====== -->
+  <aside class="profile">
+    <div class="avatar">
+      <!-- Ganti dengan foto profil Anda: foto/profil.jpg -->
+      <img src="foto/profil.jpg" alt="Foto profil" onerror="this.remove()">
+      <span aria-hidden="true">A</span>
+    </div>
+    <h1>Adelia Aisyah Azizah Ahmad</h1>
+    <p class="tagline">Mahasiswa Universitas Lambung Mangkurat</p>
+    <nav aria-label="Navigasi halaman">
+      <a href="#biodata">Biodata</a>
+      <a href="#hobi">Hobi</a>
+      <a href="#galeri">Galeri</a>
+    </nav>
+  </aside>
+
+  <main>
+
+    <!-- ====== BIODATA ====== -->
+    <section id="biodata">
+      <h2>Biodata</h2>
+      <p class="about">Halo! Saya Adell. Saya orang yang sangat ceria.</p>
+      <dl class="bio">
+        <dt>Nama lengkap</dt><dd>Adelia Aisyah Azizah Ahmad</dd>
+        <dt>Nama panggilan</dt><dd>Adell</dd>
+        <dt>Tempat, tanggal lahir</dt><dd>Kendari, 03 Agustus 2005</dd>
+        <dt>Jenis kelamin</dt><dd>Perempuan</dd>
+        <dt>Agama</dt><dd>Islam</dd>
+        <dt>Alamat</dt><dd>Bati Bati</dd>
+        <dt>Pendidikan</dt><dd>Universitas Lambung Mangkurat</dd>
+        <dt>Email</dt><dd><a href="mailto:yayalyaa2005@gmail.com">yayalyaa2005@gmail.com</a></dd>
+        <dt>Telepon</dt><dd>0895383422229</dd>
+      </dl>
+    </section>
+
+    <!-- ====== HOBI ====== -->
+    <section id="hobi">
+      <h2>Hobi</h2>
+      <ul class="hobbies">
+        <li><span class="ico" aria-hidden="true">🍳</span><h3>Memasak</h3><p>Sangat suka memasak makanan yang digemari.</p></li>
+        <li><span class="ico" aria-hidden="true">🎧</span><h3>Mendengarkan musik</h3><p>Sangat suka mendengarkan musik saat berkegiatan.</p></li>
+        <li><span class="ico" aria-hidden="true">🏀</span><h3>Olahraga</h3><p>Olahraga basket sangat saya sukai.</p></li>
+        <li><span class="ico" aria-hidden="true">✈️</span><h3>Traveling</h3><p>Sangat suka berpergian ke tempat yang seru.</p></li>
+      </ul>
+    </section>
+
+    <!-- ====== GALERI ====== -->
+    <section id="galeri">
+      <h2>Galeri</h2>
+
+      <h3 class="sub">Foto</h3>
+      <div class="photos">
+        <figure><img src="foto/foto1.jpg" alt="Foto 1" loading="lazy"><figcaption>Keterangan foto 1</figcaption></figure>
+        <figure><img src="foto/foto2.jpg" alt="Foto 2" loading="lazy"><figcaption>Keterangan foto 2</figcaption></figure>
+        <figure><img src="foto/foto3.jpg" alt="Foto 3" loading="lazy"><figcaption>Keterangan foto 3</figcaption></figure>
+        <figure><img src="foto/foto4.jpg" alt="Foto 4" loading="lazy"><figcaption>Keterangan foto 4</figcaption></figure>
+      </div>
+
+      <h3 class="sub">Video</h3>
+      <div class="videos">
+        <figure>
+          <video controls preload="metadata"><source src="video/video1.mp4" type="video/mp4">Browser Anda tidak mendukung video.</video>
+          <figcaption>Keterangan video 1</figcaption>
+        </figure>
+        <figure>
+          <video controls preload="metadata"><source src="video/video2.mp4" type="video/mp4">Browser Anda tidak mendukung video.</video>
+          <figcaption>Keterangan video 2</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <footer>&copy; 2026 Adelia Aisyah Azizah Ahmad</footer>
+  </main>
+</div>
+</body>
+</html>
