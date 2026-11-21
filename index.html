@@ -239,6 +239,22 @@ figcaption{padding:10px 14px;font-size:.92rem;font-weight:800;border-top:3px sol
 footer{position:relative;z-index:1;text-align:center;color:var(--muted);font-weight:800;padding:60px 16px 34px}
 footer svg{width:56px;height:68px;display:block;margin:0 auto 6px;overflow:visible;transform-origin:50% 100%;animation:hopS 1s ease-in-out infinite}
 
+/* ===== Isi tautan langsung tampil (Tugas 2) ===== */
+.embed{margin-top:20px}
+.eh{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:22px 0 10px}
+.eh:first-child{margin-top:0}
+.eh h3{font-size:1.3rem}
+.open{
+  text-decoration:none;font:500 .95rem 'Fredoka',sans-serif;color:var(--ink);padding:3px 16px;border-radius:999px;
+  background:#fff;border:3px solid var(--ink);box-shadow:0 4px 0 var(--ink);transition:.15s
+}
+.open:hover{background:var(--lemon);transform:translateY(-2px);box-shadow:0 6px 0 var(--ink)}
+.open:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.frame{border:3px solid var(--ink);border-radius:22px;overflow:hidden;background:#fff;box-shadow:5px 5px 0 var(--ink)}
+.frame iframe{display:block;width:100%;height:900px;border:0}
+.frame.sheet iframe{height:520px}
+@media (max-width:780px){.frame iframe{height:760px}.frame.sheet iframe{height:440px}}
+
 /* konfeti */
 .confetti{position:fixed;top:-30px;z-index:50;pointer-events:none;animation:jatuh linear forwards}
 @keyframes jatuh{to{transform:translateY(110vh) rotate(540deg);opacity:.8}}
@@ -424,7 +440,30 @@ footer svg{width:56px;height:68px;display:block;margin:0 auto 6px;overflow:visib
       <span class="tt"><span class="t">Tugas 2 · Google Form Data Diri Teman</span><span class="d">Ditemani Awan Santai</span></span>
       <span class="plus" aria-hidden="true">+</span>
     </button>
-    <div class="acc-panel" id="panel2" hidden><div class="tugas" data-id="2"></div></div>
+    <div class="acc-panel" id="panel2" hidden>
+
+      <div class="tugas" data-id="2" data-nofile></div>
+
+      <template id="embed-2">
+        <div class="embed">
+          <div class="eh">
+            <h3>📝 Google Form</h3>
+            <a class="open" href="https://docs.google.com/forms/d/e/1FAIpQLSdLxMhPAzmANvMM9wtAxsvhEcC_c-DZFPwc5_h9vyl30YsBRw/viewform?usp=header" target="_blank" rel="noopener">Buka di tab baru ↗</a>
+          </div>
+          <div class="frame">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdLxMhPAzmANvMM9wtAxsvhEcC_c-DZFPwc5_h9vyl30YsBRw/viewform?embedded=true" title="Google Form Data Diri Teman" loading="lazy">Memuat…</iframe>
+          </div>
+
+          <div class="eh">
+            <h3>📊 Google Spreadsheet</h3>
+            <a class="open" href="https://docs.google.com/spreadsheets/d/1pbBFmu-qZ__cCpgl4qaDegCNEQh7hQJ9FVcGqWcaIrM/edit?usp=sharing" target="_blank" rel="noopener">Buka di tab baru ↗</a>
+          </div>
+          <div class="frame sheet">
+            <iframe src="https://docs.google.com/spreadsheets/d/1pbBFmu-qZ__cCpgl4qaDegCNEQh7hQJ9FVcGqWcaIrM/htmlview" title="Google Spreadsheet Data Diri Teman" loading="lazy">Memuat…</iframe>
+          </div>
+        </div>
+      </template>
+    </div>
   </div>
 
   <!-- Tugas 3 : Google Form Dompet Digital -->
@@ -504,6 +543,27 @@ footer svg{width:56px;height:68px;display:block;margin:0 auto 6px;overflow:visib
 
   document.querySelectorAll('.tugas').forEach(function (box) {
     var n = box.dataset.id, key = 'tugas-' + n, urls = [];
+
+    // Mode tanpa upload: hanya judul + catatan, lalu isi tautan ditampilkan di bawahnya
+    if (box.dataset.nofile !== undefined) {
+      box.innerHTML =
+        '<svg class="pet" viewBox="0 0 100 120" aria-hidden="true"><use href="#c' + n + '"/></svg>' +
+        '<input type="text" class="judul" placeholder="Judul tugas (opsional)" aria-label="Judul Tugas ' + n + '">' +
+        '<textarea class="isi" placeholder="Catatan atau deskripsi (opsional)..." aria-label="Catatan Tugas ' + n + '"></textarea>';
+      var j2 = box.querySelector('.judul'), c2 = box.querySelector('.isi');
+      try {
+        var d2 = JSON.parse(localStorage.getItem(key) || 'null');
+        if (d2) { j2.value = d2.judul || ''; c2.value = d2.isi || ''; }
+      } catch (e) {}
+      var simpan2 = function () {
+        try { localStorage.setItem(key, JSON.stringify({ judul: j2.value, isi: c2.value })); } catch (e) {}
+      };
+      j2.addEventListener('input', simpan2);
+      c2.addEventListener('input', simpan2);
+      var tpl = document.getElementById('embed-' + n);
+      if (tpl) box.appendChild(tpl.content.cloneNode(true));
+      return;
+    }
 
     box.innerHTML =
       '<svg class="pet" viewBox="0 0 100 120" aria-hidden="true"><use href="#c' + n + '"/></svg>' +
