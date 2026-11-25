@@ -216,7 +216,7 @@ figcaption{padding:10px 14px;font-size:.92rem;font-weight:800;border-top:3px sol
 .tugas{position:relative;background:var(--c2);border:3px solid var(--ink);border-radius:26px;box-shadow:6px 6px 0 var(--ink);padding:clamp(18px,3vw,28px)}
 .tugas input[type=text],.tugas textarea{width:100%;font:inherit;font-weight:700;color:var(--ink);background:#fff;border:3px solid var(--ink);border-radius:16px;padding:10px 14px;margin-bottom:12px}
 .tugas input::placeholder,.tugas textarea::placeholder{color:#a79bc7}
-.tugas textarea{min-height:100px;resize:vertical}
+.tugas textarea{min-height:100px;resize:vertical;field-sizing:content}
 .drop{display:block;text-align:center;background:#fff;border:3px dashed var(--ink);border-radius:20px;padding:28px 14px;cursor:pointer;font-weight:800;transition:.2s}
 .drop:hover,.drop.over{background:var(--lemon);transform:scale(1.02)}
 .drop small{display:block;font-weight:700;color:var(--muted)}
@@ -239,7 +239,7 @@ figcaption{padding:10px 14px;font-size:.92rem;font-weight:800;border-top:3px sol
 footer{position:relative;z-index:1;text-align:center;color:var(--muted);font-weight:800;padding:60px 16px 34px}
 footer svg{width:56px;height:68px;display:block;margin:0 auto 6px;overflow:visible;transform-origin:50% 100%;animation:hopS 1s ease-in-out infinite}
 
-/* ===== Isi tautan langsung tampil (Tugas 2) ===== */
+/* ===== Isi tautan langsung tampil (Tugas 2 dan 3) ===== */
 .embed{margin-top:20px}
 .eh{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:22px 0 10px}
 .eh:first-child{margin-top:0}
@@ -253,7 +253,8 @@ footer svg{width:56px;height:68px;display:block;margin:0 auto 6px;overflow:visib
 .frame{border:3px solid var(--ink);border-radius:22px;overflow:hidden;background:#fff;box-shadow:5px 5px 0 var(--ink)}
 .frame iframe{display:block;width:100%;height:900px;border:0}
 .frame.sheet iframe{height:520px}
-@media (max-width:780px){.frame iframe{height:760px}.frame.sheet iframe{height:440px}}
+.frame.report iframe{height:680px}
+@media (max-width:780px){.frame iframe{height:760px}.frame.sheet iframe{height:440px}.frame.report iframe{height:520px}}
 
 /* konfeti */
 .confetti{position:fixed;top:-30px;z-index:50;pointer-events:none;animation:jatuh linear forwards}
@@ -442,7 +443,9 @@ footer svg{width:56px;height:68px;display:block;margin:0 auto 6px;overflow:visib
     </button>
     <div class="acc-panel" id="panel2" hidden>
 
-      <div class="tugas" data-id="2" data-nofile></div>
+      <div class="tugas" data-id="2" data-nofile
+           data-judul="GOOGLE FORM FORMULIR DATA DIRI TEMAN"
+           data-isi="Google Form berisi Nama Lengkap, Alamat, dan Foto Diri."></div>
 
       <template id="embed-2">
         <div class="embed">
@@ -473,7 +476,40 @@ footer svg{width:56px;height:68px;display:block;margin:0 auto 6px;overflow:visib
       <span class="tt"><span class="t">Tugas 3 · Google Form Dompet Digital</span><span class="d">Ditemani Tetes Penasaran</span></span>
       <span class="plus" aria-hidden="true">+</span>
     </button>
-    <div class="acc-panel" id="panel3" hidden><div class="tugas" data-id="3"></div></div>
+    <div class="acc-panel" id="panel3" hidden>
+
+      <div class="tugas" data-id="3" data-nofile
+           data-judul="GOOGLE FORM DOMPET DIGITAL"
+           data-isi="Analisis tingkat kepuasan mahasiswa terhadap transparansi biaya dan riwayat transaksi pada aplikasi LinkAja menggunakan metode PIECES. Google Form berisi data diri, gender, dan 30 pertanyaan mengenai aplikasi dompet digital yaitu aplikasi LinkAja."></div>
+
+      <template id="embed-3">
+        <div class="embed">
+          <div class="eh">
+            <h3>📝 Google Form</h3>
+            <a class="open" href="https://docs.google.com/forms/d/e/1FAIpQLSfH2onCRMOI-RnMNaLMoPQvkyA_wPBwTpeUwxIqKRUxNqh1oA/viewform?usp=sharing&ouid=102219124827098716350" target="_blank" rel="noopener">Buka di tab baru ↗</a>
+          </div>
+          <div class="frame">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfH2onCRMOI-RnMNaLMoPQvkyA_wPBwTpeUwxIqKRUxNqh1oA/viewform?embedded=true" title="Google Form Dompet Digital" loading="lazy">Memuat…</iframe>
+          </div>
+
+          <div class="eh">
+            <h3>📊 Google Spreadsheet</h3>
+            <a class="open" href="https://docs.google.com/spreadsheets/d/1ln-DUnOAPRPpgmV-27HPcC_ryAhK7zSKh84G1maHShE/edit?usp=sharing" target="_blank" rel="noopener">Buka di tab baru ↗</a>
+          </div>
+          <div class="frame sheet">
+            <iframe src="https://docs.google.com/spreadsheets/d/1ln-DUnOAPRPpgmV-27HPcC_ryAhK7zSKh84G1maHShE/htmlview" title="Google Spreadsheet Dompet Digital" loading="lazy">Memuat…</iframe>
+          </div>
+
+          <div class="eh">
+            <h3>📈 Laporan Looker Studio</h3>
+            <a class="open" href="https://datastudio.google.com/reporting/fbfce55f-7c99-4f08-b9b5-558285a43c8d" target="_blank" rel="noopener">Buka di tab baru ↗</a>
+          </div>
+          <div class="frame report">
+            <iframe src="https://lookerstudio.google.com/embed/reporting/fbfce55f-7c99-4f08-b9b5-558285a43c8d" title="Laporan Looker Studio Dompet Digital" loading="lazy" allowfullscreen>Memuat…</iframe>
+          </div>
+        </div>
+      </template>
+    </div>
   </div>
 
   <!-- Tugas 4 : Kelompok Pokdakan -->
@@ -544,13 +580,15 @@ footer svg{width:56px;height:68px;display:block;margin:0 auto 6px;overflow:visib
   document.querySelectorAll('.tugas').forEach(function (box) {
     var n = box.dataset.id, key = 'tugas-' + n, urls = [];
 
-    // Mode tanpa upload: hanya judul + catatan, lalu isi tautan ditampilkan di bawahnya
+    // Mode tanpa upload: judul + catatan terisi otomatis, lalu isi tautan ditampilkan di bawahnya
     if (box.dataset.nofile !== undefined) {
       box.innerHTML =
         '<svg class="pet" viewBox="0 0 100 120" aria-hidden="true"><use href="#c' + n + '"/></svg>' +
         '<input type="text" class="judul" placeholder="Judul tugas (opsional)" aria-label="Judul Tugas ' + n + '">' +
         '<textarea class="isi" placeholder="Catatan atau deskripsi (opsional)..." aria-label="Catatan Tugas ' + n + '"></textarea>';
       var j2 = box.querySelector('.judul'), c2 = box.querySelector('.isi');
+      j2.value = box.dataset.judul || '';
+      c2.value = box.dataset.isi || '';
       try {
         var d2 = JSON.parse(localStorage.getItem(key) || 'null');
         if (d2) { j2.value = d2.judul || ''; c2.value = d2.isi || ''; }
